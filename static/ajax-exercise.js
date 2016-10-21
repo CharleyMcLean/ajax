@@ -3,15 +3,19 @@
 
 // PART 1: SHOW A FORTUNE
 
-function showFortune(evt) {
-
-    // TODO: get the fortune and show it in the #fortune-text div
+function replaceFortune(results) {
+    // Can save results as a variable, but don't have to.
+    // var fortune = results;
+    $('#fortune-text').html(results);
+    console.log("Finished replacing fortune!");
 }
 
-$('#get-fortune-button').on('click', showFortune);
+function updateFortune(evt) {
+    $.get('/fortune', replaceFortune);
+    console.log("Finished sending AJAX, also updating fortune.");
+}
 
-
-
+$('#get-fortune-button').on('click', updateFortune);
 
 
 // PART 2: SHOW WEATHER
