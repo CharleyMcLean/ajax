@@ -20,12 +20,21 @@ $('#get-fortune-button').on('click', updateFortune);
 
 // PART 2: SHOW WEATHER
 
+function showForecast(results) {
+    console.dir(results);
+    $('#weather-info').html(results.forecast);
+}
+
 function showWeather(evt) {
     evt.preventDefault();
 
-    var url = "/weather?zipcode=" + $("#zipcode-field").val();
+    var url = "/weather.json?zipcode=" + $("#zipcode-field").val();
 
-    // TODO: request weather with that URL and show the forecast in #weather-info
+    // TODO: request weather with that URL and show the forecast in 
+    // #weather-info
+
+    $.get(url,
+        showForecast);
 }
 
 $("#weather-form").on('submit', showWeather);
